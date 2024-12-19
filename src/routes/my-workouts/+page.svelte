@@ -1,6 +1,11 @@
 <script lang="ts">
-	import { workoutStore } from '$lib/stores/my-workouts-store.svelte';
+	import { getAllWorkouts, workoutStore } from '$lib/stores/my-workouts-store.svelte';
+
 	import WorkoutCard from '../../lib/components/workout-card.svelte';
+
+	$effect(() => {
+		getAllWorkouts();
+	});
 </script>
 
 <div class="m-3">

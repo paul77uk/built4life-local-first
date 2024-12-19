@@ -27,7 +27,11 @@ export { db };
 
 navigator.storage.persist();
 // Request persistent storage for site
-if (navigator.storage && navigator.storage.persist) {
-	const isPersisted = await navigator.storage.persist();
-	console.log(`Persisted storage granted: ${isPersisted}`);
-}
+const isPersisted = async () => {
+	if (navigator.storage && navigator.storage.persist) {
+		const isPersisted = await navigator.storage.persist();
+		console.log(`Persisted storage granted: ${isPersisted}`);
+	}
+};
+
+isPersisted();

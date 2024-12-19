@@ -1,6 +1,16 @@
-import { addWorkout, deleteWorkoutById, getWorkoutById, getWorkouts } from '$lib/db/repositories/workout-repository';
+import {
+	addWorkout,
+	deleteWorkoutById,
+	getWorkoutById,
+	getWorkouts
+} from '$lib/db/repositories/workout-repository';
 
-let workouts = $state(await getWorkouts());
+type Workout = {
+	id?: number;
+	title: string;
+};
+
+let workouts: Workout[] = $state([]);
 
 export const saveWorkout = async (title: string) => {
 	const workout = await addWorkout(title);

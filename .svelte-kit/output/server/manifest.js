@@ -10,11 +10,13 @@ return {
 	assets: new Set(["favicon.png","service-worker.js"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.DaAtb17u.js","app":"_app/immutable/entry/app.CFlEdSGa.js","imports":["_app/immutable/entry/start.DaAtb17u.js","_app/immutable/chunks/entry.BaBff65H.js","_app/immutable/chunks/runtime.CrKm5I-o.js","_app/immutable/entry/app.CFlEdSGa.js","_app/immutable/chunks/runtime.CrKm5I-o.js","_app/immutable/chunks/render.CdcTL54P.js","_app/immutable/chunks/disclose-version.BQodWu-7.js","_app/immutable/chunks/proxy.CHWnTM2O.js","_app/immutable/chunks/store.BecIhhb0.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
+		client: {"start":"_app/immutable/entry/start.D6zqEyzn.js","app":"_app/immutable/entry/app.Ctq3oT7Z.js","imports":["_app/immutable/entry/start.D6zqEyzn.js","_app/immutable/chunks/entry.C-c44tds.js","_app/immutable/chunks/runtime.bXq9IHA8.js","_app/immutable/entry/app.Ctq3oT7Z.js","_app/immutable/chunks/runtime.bXq9IHA8.js","_app/immutable/chunks/store.BgTw70yS.js","_app/immutable/chunks/disclose-version.Bg9kRutz.js","_app/immutable/chunks/if.ChpqNVhO.js","_app/immutable/chunks/props.BwDTEM8d.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
-			__memo(() => import('./nodes/2.js'))
+			__memo(() => import('./nodes/2.js')),
+			__memo(() => import('./nodes/3.js')),
+			__memo(() => import('./nodes/4.js'))
 		],
 		routes: [
 			{
@@ -22,6 +24,20 @@ return {
 				pattern: /^\/$/,
 				params: [],
 				page: { layouts: [0,], errors: [1,], leaf: 2 },
+				endpoint: null
+			},
+			{
+				id: "/my-workouts",
+				pattern: /^\/my-workouts\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 3 },
+				endpoint: null
+			},
+			{
+				id: "/workouts",
+				pattern: /^\/workouts\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 4 },
 				endpoint: null
 			}
 		],
