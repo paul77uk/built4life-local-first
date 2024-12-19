@@ -1,0 +1,12 @@
+{
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/my-workouts": [
+		"src/routes/+layout.ts"
+	],
+	"/workouts": [
+		"src/routes/+layout.ts"
+	]
+}

@@ -1,0 +1,82 @@
+[
+	{
+		"title": "Squat 3x5",
+		"exercises": [
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			}
+		]
+	},
+	{
+		"title": "Squat 5x5",
+		"exercises": [
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Squat",
+				"reps": 5,
+				"weight": 0
+			}
+		]
+	},
+	{
+		"title": "Press 3x5",
+		"exercises": [
+			{
+				"name": "Press",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Press",
+				"reps": 5,
+				"weight": 0
+			},
+			{
+				"name": "Press",
+				"reps": 5,
+				"weight": 0
+			}
+		]
+	},
+	{
+		"title": "Press AMRAP",
+		"exercises": [
+			{
+				"name": "Press",
+				"reps": 0,
+				"weight": 0
+			}
+		]
+	}
+]
