@@ -1,4 +1,5 @@
 import Dexie, { type EntityTable } from 'dexie';
+import { browser } from '$app/environment';
 
 export type Workout = {
 	id?: number;
@@ -25,13 +26,19 @@ db.version(1).stores({
 
 export { db };
 
-navigator.storage.persist();
 // Request persistent storage for site
-const isPersisted = async () => {
-	if (navigator.storage && navigator.storage.persist) {
-		const isPersisted = await navigator.storage.persist();
-		console.log(`Persisted storage granted: ${isPersisted}`);
-	}
-};
+export const persist = async () => {
+  if(browser) {
+    console.log('setting persistence...');
+    return navigator.storage && navigator.storage.persist && navigator.storage.persist();
+  }
+  return {};
+}
 
-isPersisted();
+export const isStoragePersisted = async () => {
+  if(browser) {
+    console.log('checking persistence...');
+    return navigator.storage && navigator.storage.persisted && navigator.storage.persisted();
+  }
+  return {};
+}
