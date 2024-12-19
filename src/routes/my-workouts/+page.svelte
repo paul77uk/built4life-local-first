@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { exerciseStore, getExercises } from '$lib/stores/my-exercises-store.svelte';
 	import { workoutStore } from '$lib/stores/my-workouts-store.svelte';
 	import WorkoutCard from '../../lib/components/workout-card.svelte';
 </script>

@@ -25,9 +25,9 @@ db.version(1).stores({
 
 export { db };
 
-navigator.storage.persist();
-// Request persistent storage for site
-if (navigator.storage && navigator.storage.persist) {
-	const isPersisted = await navigator.storage.persist();
-	console.log(`Persisted storage granted: ${isPersisted}`);
-}
+// navigator.storage.persist();
+// // Request persistent storage for site
+// if (navigator.storage && navigator.storage.persist) {
+// 	const isPersisted = await navigator.storage.persist();
+// 	console.log(`Persisted storage granted: ${isPersisted}`);
+// }
