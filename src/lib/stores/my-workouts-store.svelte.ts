@@ -32,6 +32,13 @@ export const deleteWorkout = async (id: number) => {
 	getAllWorkouts();
 };
 
+export const workoutSearch = async (search: string) => {
+	workouts = await getWorkouts();
+	if (search) {
+		workouts = workouts.filter((workout) => workout.title.toLowerCase().includes(search.toLowerCase()));
+	}
+}
+
 const workoutStore = () => {
 	return {
 		workouts
