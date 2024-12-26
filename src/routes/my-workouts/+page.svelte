@@ -3,8 +3,7 @@
 	import Input from '$lib/components/ui/input/input.svelte';
 	import Label from '$lib/components/ui/label/label.svelte';
 	import { export_to_json, onChange } from '$lib/stores/file-transfer-store.svelte';
-	import { exerciseStore, getExercises, saveExercise } from '$lib/stores/my-exercises-store.svelte';
-	import { getAllWorkouts, saveWorkout, workoutStore } from '$lib/stores/my-workouts-store.svelte';
+	import { getAllWorkouts, workoutStore } from '$lib/stores/my-workouts-store.svelte';
 
 	import WorkoutCard from '../../lib/components/workout-card.svelte';
 

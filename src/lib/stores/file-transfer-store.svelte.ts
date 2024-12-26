@@ -1,3 +1,4 @@
+import { db } from '$lib/db';
 import { exerciseStore, getExercises, saveExercise } from './my-exercises-store.svelte';
 import { saveWorkout, workoutStore } from './my-workouts-store.svelte';
 
@@ -42,16 +43,23 @@ const uploadJson = async (workout: any) => {
 	});
 };
 
-export const export_to_json = async () => {
-	const data = workoutStore().workouts.map((workout) => {
-		if (workout.id) getExercises(workout.id);
-		return {
-			title: workout.title,
-			exercises: exerciseStore().exercises
-		};
-	});
+const getWorkoutsWithExercises = async () => {
+	const workouts = await db.workouts.toArray();
+	const allWorkouts = await Promise.all(
+		workouts.map(async (workout) => {
+			if (workout.id) {
+				const exercises = await db.exercises.where('workoutId').equals(workout.id).toArray();
+				return { ...workout, exercises };
+			}
+		})
+	);
+	return allWorkouts;
+};
 
-	const json = JSON.stringify(data);
+export const export_to_json = async () => {
+	const allWorkouts = await getWorkoutsWithExercises();
+
+	const json = JSON.stringify(allWorkouts, null, 2);
 	const blob = new Blob([json], { type: 'application/json' });
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');

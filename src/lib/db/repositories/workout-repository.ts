@@ -1,9 +1,5 @@
+import type { Workout } from '$lib/types';
 import { db } from '..';
-
-type Workout = {
-	id?: number;
-	title: string;
-};
 
 export const addWorkout = async (title: string) => {
 	const workoutId = await db.workouts.add({

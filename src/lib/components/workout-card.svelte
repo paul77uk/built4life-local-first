@@ -6,6 +6,7 @@
 	import { getExercises, saveExercises } from '$lib/stores/my-exercises-store.svelte';
 	import { deleteWorkout, saveWorkout } from '$lib/stores/my-workouts-store.svelte';
 	import { exerciseStore } from '$lib/stores/my-exercises-store.svelte';
+	import type { Exercise } from '$lib/types';
 
 	type WorkoutData = {
 		workout: {
@@ -17,13 +18,6 @@
 				weight: number;
 			}[];
 		};
-	};
-
-	type Exercise = {
-		id?: number;
-		name: string;
-		reps: number;
-		weight: number;
 	};
 
 	let { workout }: WorkoutData = $props();
@@ -52,7 +46,6 @@
 				{/each}
 			{/if}
 			{#if $page.url.pathname === '/my-workouts'}
-				<!-- <ExerciseByWorkoutId {workout} /> -->
 				{#each exercises as exercise}
 					<p>{exercise.reps} {exercise.name} ({exercise.weight}kg)</p>
 				{/each}

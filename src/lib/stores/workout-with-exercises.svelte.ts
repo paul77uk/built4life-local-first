@@ -1,3 +1,4 @@
+import { getWorkout } from './my-workouts-store.svelte';
 import type { WorkoutWithExercises } from '$lib/types';
 
 let workoutWithExercises: WorkoutWithExercises[] = $state([]);

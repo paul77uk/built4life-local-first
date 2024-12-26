@@ -46,6 +46,9 @@ const exerciseStore = () => {
 	return {
 		get exercises() {
 			return exercises;
+		},
+		set exercises(value: Exercise[]) {
+			exercises = value;
 		}
 	};
 };
