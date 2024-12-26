@@ -1,6 +1,7 @@
 export type Workout = {
 	id?: number;
 	title: string;
+	description?: string;
 };
 
 export type Exercise = {
@@ -14,5 +15,6 @@ export type Exercise = {
 export type WorkoutWithExercises = {
 	id?: number;
 	title: string;
+	description?: string;
 	exercises: Exercise[];
 };
