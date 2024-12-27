@@ -1,16 +1,10 @@
 import {
 	addExercise,
 	deleteExercise,
-	getExercisesByWorkoutId
+	getExercisesByWorkoutId,
+	updateExercise
 } from '$lib/db/repositories/exercise-repository';
-
-type Exercise = {
-	id?: number;
-	name: string;
-	reps: number;
-	weight: number;
-	workoutId?: number;
-};
+import type { Exercise } from '$lib/types';
 
 let exercises: Exercise[] = $state([]);
 
@@ -40,6 +34,11 @@ export const deleteExercises = async (workoutId: number) => {
 	exercises.forEach(async (exercise) => {
 		if (exercise.id) await deleteExercise(exercise.id);
 	});
+};
+
+export const editExercise = async (exercise: Exercise) => {
+	await updateExercise(exercise);
+	if (exercise.workoutId) getExercises(exercise.workoutId);
 };
 
 const exerciseStore = () => {

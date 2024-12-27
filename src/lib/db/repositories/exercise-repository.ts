@@ -1,3 +1,4 @@
+import type { Exercise } from '$lib/types';
 import { db } from '..';
 
 export const addExercise = async (
@@ -20,4 +21,8 @@ export const getExercisesByWorkoutId = async (workoutId: number) => {
 
 export const deleteExercise = async (id: number) => {
 	await db.exercises.delete(id);
+};
+
+export const updateExercise = async (exercise: Exercise) => {
+	await db.exercises.update(exercise.id, exercise);
 };

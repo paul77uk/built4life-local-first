@@ -19,3 +19,7 @@ export const getWorkouts = async (): Promise<Array<Workout>> => {
 export const deleteWorkoutById = async (id: number) => {
 	await db.workouts.delete(id);
 };
+
+export const updateWorkout = async (workout: Workout) => {
+	await db.workouts.update(workout.id, workout);
+};

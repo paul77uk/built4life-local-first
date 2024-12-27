@@ -2,7 +2,8 @@ import {
 	addWorkout,
 	deleteWorkoutById,
 	getWorkoutById,
-	getWorkouts
+	getWorkouts,
+	updateWorkout
 } from '$lib/db/repositories/workout-repository';
 
 type Workout = {
@@ -32,12 +33,19 @@ export const deleteWorkout = async (id: number) => {
 	getAllWorkouts();
 };
 
+export const editWorkout = async (workout: Workout) => {
+	await updateWorkout(workout);
+	getAllWorkouts();
+};
+
 export const workoutSearch = async (search: string) => {
 	workouts = await getWorkouts();
 	if (search) {
-		workouts = workouts.filter((workout) => workout.title.toLowerCase().includes(search.toLowerCase()));
+		workouts = workouts.filter((workout) =>
+			workout.title.toLowerCase().includes(search.toLowerCase())
+		);
 	}
-}
+};
 
 const workoutStore = () => {
 	return {

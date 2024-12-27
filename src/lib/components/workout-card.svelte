@@ -4,9 +4,13 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Card from '$lib/components/ui/card';
 	import { getExercises, saveExercises } from '$lib/stores/my-exercises-store.svelte';
-	import { deleteWorkout, saveWorkout } from '$lib/stores/my-workouts-store.svelte';
+	import { deleteWorkout, editWorkout, saveWorkout } from '$lib/stores/my-workouts-store.svelte';
 	import { exerciseStore } from '$lib/stores/my-exercises-store.svelte';
 	import type { Exercise } from '$lib/types';
+	import Icon from '@iconify/svelte';
+	import EditWorkout from './edit-workout.svelte';
+	import Input from './ui/input/input.svelte';
+	import * as Table from '$lib/components/ui/table/index.js';
 
 	type WorkoutData = {
 		workout: {
@@ -39,16 +43,48 @@
 	</Card.Header>
 
 	<div class="flex h-full flex-col">
-		<Card.Content class="mx-auto">
+		<Card.Content class="mx-auto px-2">
 			{#if workout.exercises && $page.url.pathname === '/workouts'}
 				{#each workout.exercises as exercise}
 					<p>{exercise.reps} {exercise.name} ({exercise.weight}kg)</p>
 				{/each}
 			{/if}
 			{#if $page.url.pathname === '/my-workouts'}
-				{#each exercises as exercise}
-					<p>{exercise.reps} {exercise.name} ({exercise.weight}kg)</p>
-				{/each}
+				<div class="rounded-lg border-2">
+					<Table.Root>
+						<Table.Header>
+							<Table.Row>
+								<Table.Head>Reps</Table.Head>
+								<Table.Head>Exercise</Table.Head>
+								<Table.Head class="text-right">Weight</Table.Head>
+							</Table.Row>
+						</Table.Header>
+						<Table.Body>
+							{#each exercises as exercise}
+								<Table.Row>
+									<Table.Cell
+										><Input
+											value={exercise.reps}
+											class="border-0 shadow-none focus-visible:ring-0 px-1"
+										/></Table.Cell
+									>
+									<Table.Cell
+										><Input
+											value={exercise.name}
+											class="border-0 shadow-none focus-visible:ring-0 px-1"
+										/></Table.Cell
+									>
+									<Table.Cell class="text-right"
+										><Input
+											value={exercise.weight}
+											class="border-0 shadow-none focus-visible:ring-0 pl-6"
+										/></Table.Cell
+									>
+								</Table.Row>
+							{/each}
+						</Table.Body>
+					</Table.Root>
+				</div>
 			{/if}
 		</Card.Content>
 
@@ -66,14 +102,19 @@
 				>
 			{/if}
 			{#if $page.url.pathname === '/my-workouts'}
-				<Button
-					onclick={() => {
-						if (workout.id) {
-							deleteWorkout(workout.id);
-						}
-					}}
-					variant="outline">Delete workout</Button
-				>
+				<div class="flex gap-1.5">
+					<EditWorkout {workout} {exercises} />
+					<Button
+						class="size-8"
+						onclick={() => {
+							if (workout.id) {
+								deleteWorkout(workout.id);
+							}
+						}}
+						variant="outline"
+						><Icon icon="ic:outline-delete" />
+					</Button>
+				</div>
 			{/if}
 		</Card.Footer>
 	</div>

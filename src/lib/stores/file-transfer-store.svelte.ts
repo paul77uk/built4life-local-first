@@ -1,6 +1,6 @@
 import { db } from '$lib/db';
-import { exerciseStore, getExercises, saveExercise } from './my-exercises-store.svelte';
-import { saveWorkout, workoutStore } from './my-workouts-store.svelte';
+import { saveExercise } from './my-exercises-store.svelte';
+import { saveWorkout } from './my-workouts-store.svelte';
 
 let json: Array<string> | undefined | null = $state();
 
